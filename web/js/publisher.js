@@ -5,7 +5,6 @@
   var touchstart = isTouch ? 'touchstart' : 'mousedown';
   var touchmove = isTouch ? 'touchmove' : 'mousemove';
   var touchend = isTouch ? 'touchend' : 'mouseup';
-  var videoCtrlBtn;
 
   var getTouch = (function getTouchWrapper() {
     return isTouch ? function(e) { return e.touches[0] } :
@@ -44,13 +43,18 @@
 
         break;
       case 'click':
-        videoCtrlBtn.classList.toggle('enabled');
+        var elem = evt.target;
+        if (!('action' in elem.dataset)) {
+          return;
+        }
+        elem.classList.toggle('enabled');
         var newEvt = new CustomEvent('roomView:pubButtonClick', {
           detail: {
             name: 'video'
           }
         });
         global.dispatchEvent(newEvt);
+
         break;
     }
   }
@@ -59,16 +63,16 @@
 
   var centerX, centerY;
 
-  function setControlBtns() {
-    videoCtrlBtn = HTMLElems.createElementAt(publisher, 'i');
-    videoCtrlBtn.dataset.icon = 'camera';
+  function addControlBtns() {
+    var videoCtrlBtn = HTMLElems.createElementAt(publisher, 'i',
+                     {'data-icon': 'camera', 'data-action': 'video'});
     videoCtrlBtn.classList.add('enabled');
   }
 
   function init() {
     publisher = document.getElementById('publisher');
     publisherStyle = publisher.style;
-    setControlBtns();
+    addControlBtns();
     var rectObject = publisher.getBoundingClientRect();
     centerX = rectObject.left + (rectObject.width / 2);
     centerY = rectObject.top + (rectObject.height / 2);
