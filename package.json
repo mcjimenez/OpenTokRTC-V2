@@ -4,7 +4,7 @@
   "description": "OpenTok RTC sample application to show off the OpenTok API and platform capabilities ",
   "main": "server.js",
   "engines": {
-    "node": "4.1.x",
+    "node": "4.8.x",
     "npm": "2.14.x"
   },
   "scripts": {
@@ -18,9 +18,9 @@
   "author": "Tokbox's PSE Team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AntonioMA/openTokRTCV2/issues"
+    "url": "https://github.com/mcjimenez/openTokRTCV2/issues"
   },
-  "homepage": "https://github.com/AntonioMA/openTokRTCV2/",
+  "homepage": "https://github.com/mcjimenez/openTokRTCV2/",
   "dependencies": {
     "body-parser": "^1.14.1",
     "bower": "^1.6.5",
