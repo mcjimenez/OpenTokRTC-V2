@@ -91,7 +91,7 @@
             sessionId: window.precallSessionId,
             token: window.precallToken
           };
-          setTimeout(submitForm, 500);
+          setTimeout(submitForm, 1000);
           // You cannot use the network test in IE or Safari. IE cannot subscribe to its own stream.
           // In Safari on iOS, you cannot use two publishers (the preview publisher and the network
           // test publisher) simultaneously.
